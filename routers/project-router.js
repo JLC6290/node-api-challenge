@@ -46,7 +46,7 @@ router.get('/:id/actions', (req, res, next) => {
 })
 
 router.post('/', validateProject(), (req, res, next) => {
-    const newProject = req.body;
+    var newProject = req.body;
     console.log(newProject);
     Project.insert(newProject)
         .then(project => {
@@ -58,7 +58,7 @@ router.post('/', validateProject(), (req, res, next) => {
 })
 
 router.delete('/:id', (req, res, next) => {
-    const id = req.params.id;
+    var id = req.params.id;
     Project.remove(id)
         .then(response => {
             res.status(200).json({
@@ -69,8 +69,8 @@ router.delete('/:id', (req, res, next) => {
 })
 
 router.put('/:id', (req, res, next) => {
-    id = req.params.id;
-    changes = req.body;
+    var id = req.params.id;
+    var changes = req.body;
     Project.update(id, changes)
         .then(response => {
             res.status(201).json({
