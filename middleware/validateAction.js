@@ -1,9 +1,24 @@
 const express = require('express')
 server = express()
+const Project = require('../data/helpers/projectModel');
+
 
 module.exports = () => {
     return (req, res, next) => {
-        const action = req.body;
+        var action = req.body;
+        // var id = req.body.project_id;
+        // Project.get(id)
+        //     .then(response => {
+        //         res.send(response)
+        //         if(!response){
+        //             res.status(404).json({
+        //                 message: "Project ID not found"
+        //             })
+        //         }
+        //     })
+        //     .catch(error => {
+
+        //     })
         if(action.description.length > 128) {
             res.status(400).json({
                 message: "Action description must be 128 characters max"
@@ -12,7 +27,6 @@ module.exports = () => {
             res.status(400).json({
                 message: "The description or notes provided is invalid. Cannot be blank."
             })
-        }
-        else next();
+        }else next();
     }
 }
