@@ -3,6 +3,8 @@ const server = express()
 const port = 4000
 const projectsRouter = require('./routers/project-router')
 const actionsRouter = require('./routers/action-router')
+const cors = require('cors')
+server.use(cors())
 
 server.use(express.json())
 
