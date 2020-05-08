@@ -6,8 +6,8 @@ module.exports = () => {
         const project = req.body;
             if(!project.name || !project.description) {
                 res.status(400).json({
-                    message: "The name or description provided is invalid",
+                    message: "The name or description provided is invalid. Cannot be blank.",
                 })
-            }else next;
+            }else next();
     }
 }

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Project = require('../data/helpers/projectModel');
 
-const validateProject = require('../middleware/validateProject');
+// const validateProject = require('../middleware/validateProject');
 
 
 router.get('/', (req, res, next) => {
@@ -45,7 +45,7 @@ router.get('/:id/actions', (req, res, next) => {
         .catch(next)
 })
 
-router.post('/', validateProject(), (req, res, next) => {
+router.post('/', validateProject, (req, res) => {
     var newProject = req.body;
     console.log(newProject);
     Project.insert(newProject)
@@ -54,7 +54,9 @@ router.post('/', validateProject(), (req, res, next) => {
                 message: `Project ${project.name} successfully added`,
             })
         })
-        .catch(next)
+        .catch(error => {
+            res.status(500).json({error})
+        })
 })
 
 router.delete('/:id', (req, res, next) => {
@@ -77,8 +79,20 @@ router.put('/:id', (req, res, next) => {
                 message: `Updated project: ${response}`,
             })
         })
-        .catch(next)
+        .catch(next())
 })
+
+function validateProject (req, res, next) {
+        const project = req.body;
+            if(!project.name || !project.description) {
+                res.status(400).json({
+                    message: "The name or description provided is invalid. Cannot be blank.",
+                })
+            }else {
+                next();
+            }
+    }
+
 
 
 module.exports = router;

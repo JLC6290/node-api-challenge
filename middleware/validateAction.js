@@ -13,6 +13,6 @@ module.exports = () => {
                 message: "The description or notes provided is invalid. Cannot be blank."
             })
         }
-        else next;
+        else next();
     }
 }
