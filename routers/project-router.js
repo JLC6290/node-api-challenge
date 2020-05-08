@@ -75,11 +75,10 @@ router.put('/:id', (req, res, next) => {
     var changes = req.body;
     Project.update(id, changes)
         .then(response => {
-            res.status(201).json({
-                message: `Updated project: ${response}`,
-            })
+            // console.log(response);
+            res.status(201).json({response})
         })
-        .catch(next())
+        .catch()
 })
 
 function validateProject (req, res, next) {

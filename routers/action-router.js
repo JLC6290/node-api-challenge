@@ -49,11 +49,11 @@ router.put('/:id', (req, res, next) => {
     var changes = req.body;
     Action.update(id, changes)
         .then(response => {
-            res.status(201).json({
-                messsage: `Updated action: ${response}`
-            })
+            res.status(201).json(response)
         })
-        .catch(error)
+        .catch(error => {
+            console.log(error);
+        })
 })
 
 function checkProject () {
