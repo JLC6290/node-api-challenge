@@ -47,6 +47,7 @@ router.get('/:id/actions', (req, res, next) => {
 
 router.post('/', validateProject(), (req, res, next) => {
     const newProject = req.body;
+    console.log(newProject);
     Project.insert(newProject)
         .then(project => {
             res.status(201).json({

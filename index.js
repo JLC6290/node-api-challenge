@@ -2,7 +2,7 @@ const express = require('express')
 const server = express()
 const port = 4000
 const projectsRouter = require('./routers/project-router')
-// const actionsRouter = require('./routers/action-router')
+const actionsRouter = require('./routers/action-router')
 
 server.use(express.json())
 
@@ -11,7 +11,7 @@ server.get('/', (req, res) => {
 })
 
 server.use('/api/projects', projectsRouter)
-// server.use('/api/actions', actionsRouter)
+server.use('/api/actions', actionsRouter)
 
 //error middleware
 server.use((err, req, res, next) => {
