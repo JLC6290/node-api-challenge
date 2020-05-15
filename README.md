@@ -40,13 +40,23 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+**Routing and middleware. Routing gives us the ability to send requests to a desired handler, with middleware allowing us to perform some desired action on them at any point between receiving the request and sending a response.**
+
 - [ ] Describe Middleware?
+
+**Middleware allowing us to perform some desired action on them at any point between receiving the request and sending a response.**
 
 - [ ] Describe a Resource?
 
+**A resource is an object with methods associated with the standard HTTP requests. It has associated data which it can act on, as well as relationships to other resources.**
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+**The associated conventional status, and associated data that may have been successfully modified or added.**
+
 - [ ] How can we partition our application into sub-applications?
+
+**By utilizing node's ability to compartamentalize functions into related files and route control of a request based on data witin it.**
 
 ## Minimum Viable Product
 
